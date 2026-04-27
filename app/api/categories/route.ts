@@ -1,0 +1,3 @@
+import { NextResponse } from 'next/server';import { supabaseAdmin } from '@/lib/supabase';import { requireUser } from '@/lib/authz';
+export async function POST(req:Request){await requireUser(); const f=await req.formData(); await supabaseAdmin.from('categories').insert({guild_id:f.get('guild_id'),name:f.get('name'),description:f.get('description'),image_url:f.get('image_url'),sort_order:Number(f.get('sort_order')||0),enabled:true}); return NextResponse.redirect(new URL('/dashboard',req.url))}
+export async function GET(req:Request){const gid=new URL(req.url).searchParams.get('guild_id'); const {data}=await supabaseAdmin.from('categories').select('*').eq('guild_id',gid).eq('enabled',true).order('sort_order'); return NextResponse.json({categories:data||[]})}

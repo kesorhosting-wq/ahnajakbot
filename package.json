@@ -1,0 +1,28 @@
+{
+  "name": "ahnajakmc-store-public-bot",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "bot": "node bot/index.js",
+    "register": "node bot/register-commands.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "latest",
+    "discord.js": "^14.18.0",
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "zod": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "typescript": "latest",
+    "eslint": "latest",
+    "eslint-config-next": "latest"
+  }
+}
